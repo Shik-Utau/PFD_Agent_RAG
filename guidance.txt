@@ -1,0 +1,9 @@
+话说周末我想了下，感觉你可以尝试下弄个基于语义向量的数据库搜索？
+现在的流程是LLM查表（node_info.db），然后根据返回的所有结果，决定看哪个domain_dataset，
+然后现在可以把每个domain_dataset 的metadata都向量化，
+搜索的时候直接根据语义匹配最合适的domain_dataset。
+首先问题是，材料计算数据集的metadata非常庞杂，它的检索调用很麻烦，所以需要用语义向量匹配用户需求，
+然后我们做了一个语义检索，可以在一些具体的检索案例上测试。
+因为用户的问题可能非常diverse，比如说domain dataset的metadata里说“包含GaAs”，但是用户问“I need data for zinc-blende gallium arsenide”。
+
+可以先试下预训练的能不能用？对比完后，就展示一个应用层面的案例，比如agent驱动的力场微调-数据回流-材料模拟，这样论文基本架构应该是有了。

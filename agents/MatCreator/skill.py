@@ -10,7 +10,7 @@ the guide system unchanged.
 from google.adk import Agent
 from google.adk.skills import load_skill_from_dir
 from google.adk.tools import skill_toolset
-from .workspace import workspace_skills_dir
+from .workspace import workspace_skills_dir, init_workspace
 from .constants import _SKILLS_DIR
 import pathlib
 
@@ -18,6 +18,8 @@ import pathlib
 def load_skills() -> list:
     """Load all skills from _SKILLS_DIR that contain a SKILL.md file."""
     skills_root = workspace_skills_dir()
+    # if not skills_root.exists():
+    #     init_workspace()
     skills = []
     for skill_dir in sorted(skills_root.iterdir()):
         if skill_dir.is_dir() and (skill_dir / "SKILL.md").exists():
